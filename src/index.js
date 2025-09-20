@@ -1,25 +1,11 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-import { withScriptjs } from "react-google-maps";
-import Map from './Map';
-import './style.css';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./style.css";
+import App from "./App";
+import "semantic-ui-css/semantic.min.css";
+import registerServiceWorker from "./register";
 
-const App = () => {
-  const MapLoader = withScriptjs(Map);
+ReactDOM.render(<App />, document.getElementById("root"));
 
-  return (
-    <div>
-    <div className="container teal borderXwidth">
-  <a>Traffic Time Predictor</a>
-  <a href="hdbscan.html">Event based Traffic</a>
-
-</div>
-    <MapLoader
-      googleMapURL="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry,places,drawing&key="
-      loadingElement={<div style={{ height: `100%` }} />}
-    />
-    </div>
-  );
-};
-
-render(<App />, document.getElementById('root'));
+// Optional: enables caching/offline via service worker
+registerServiceWorker();
